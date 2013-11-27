@@ -1483,7 +1483,11 @@ public class Controller
         boolean canGoForward = false;
         boolean isHome = false;
         boolean isDesktopUa = false;
+        boolean isFloatWindow = false;
         boolean isLive = false;
+        
+        isFloatWindow = mSettings.getFloatWindowSetting();
+        
         if (tab != null) {
             canGoBack = tab.canGoBack();
             canGoForward = tab.canGoForward();
@@ -1525,6 +1529,9 @@ public class Controller
         boolean showDebugSettings = mSettings.isDebugEnabled();
         final MenuItem uaSwitcher = menu.findItem(R.id.ua_desktop_menu_id);
         uaSwitcher.setChecked(isDesktopUa);
+        final MenuItem floatWindow = menu.findItem(R.id.enable_flow_window_menu_id);
+        floatWindow.setChecked(isFloatWindow);
+        
         menu.setGroupVisible(R.id.LIVE_MENU, isLive);
         menu.setGroupVisible(R.id.SNAPSHOT_MENU, !isLive);
         menu.setGroupVisible(R.id.COMBO_MENU, false);
@@ -1655,6 +1662,10 @@ public class Controller
             case R.id.ua_desktop_menu_id:
                 toggleUserAgent();
                 break;
+                
+            case R.id.enable_flow_window_menu_id:
+            	toggleFloatWindow();
+            	break;
 
             case R.id.window_one_menu_id:
             case R.id.window_two_menu_id:
@@ -1690,6 +1701,11 @@ public class Controller
         WebView web = getCurrentWebView();
         mSettings.toggleDesktopUseragent(web);
         web.loadUrl(web.getOriginalUrl());
+    }
+    
+    @Override
+    public void toggleFloatWindow() {
+        mSettings.toggleFloatWindow();
     }
 
     @Override

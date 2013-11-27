@@ -501,6 +501,15 @@ public class BrowserSettings implements OnSharedPreferenceChangeListener,
             settings.setUserAgentString(DESKTOP_USERAGENT);
         }
     }
+    
+    public void toggleFloatWindow() {
+        boolean value = mPrefs.getBoolean(PREF_FLOW_WINDOW_ENABLE, false);
+        mPrefs.edit().putBoolean(PREF_FLOW_WINDOW_ENABLE, !value).apply();
+    }
+    
+    public boolean getFloatWindowSetting() {
+    	return mPrefs.getBoolean(PREF_FLOW_WINDOW_ENABLE, false);
+    }
 
     public static int getAdjustedMinimumFontSize(int rawValue) {
         rawValue++; // Preference starts at 0, min font at 1
@@ -693,9 +702,6 @@ public class BrowserSettings implements OnSharedPreferenceChangeListener,
     }
 
     public int getUserAgent() {
-        if (!isDebugEnabled()) {
-            return 0;
-        }
         return Integer.parseInt(mPrefs.getString(PREF_USER_AGENT, "0"));
     }
 

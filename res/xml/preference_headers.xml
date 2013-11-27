@@ -39,5 +39,9 @@
     <header android:fragment="com.android.browser.preferences.LabPreferencesFragment"
         android:title="@string/pref_lab_title"
     />
+    
+    <header android:fragment="com.android.browser.preferences.BrowserModeFragment"
+        android:title="@string/broswer_mode_setting_title"
+    />
 
 </preference-headers>

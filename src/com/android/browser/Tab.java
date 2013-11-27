@@ -23,6 +23,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
@@ -779,6 +780,27 @@ class Tab implements PictureListener {
                 mTouchIconLoader.execute(url);
             }
         }
+        
+        @Override
+        public void onShowFloatingVideoView(String path, int position, 
+        		WebChromeClient.CustomViewCallback callback) 
+        {
+        	if (path.startsWith("file://")) {
+	        	Uri mUri = Uri.parse(path);
+	        	path = mUri.getPath();
+        	}
+        	Log.v("TAB.java", "onShowFloatingVideoView:" + path + " position:" + position);
+        	Intent intent = new Intent("softwinner.intent.action.PLAY_NETURI").putExtra("path", path).putExtra("position", position);
+        	mContext.startService(intent);
+
+        	callback.onCustomViewHidden();
+        };
+        
+        @Override
+        public boolean getEnterFullScreenMode() 
+        {
+        	return mSettings.getFloatWindowSetting();
+        };
 
         @Override
         public void onShowCustomView(View view,
