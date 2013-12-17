@@ -104,8 +104,6 @@ public interface UiController {
     void findOnPage();
 
     void toggleUserAgent();
-    
-    void toggleFloatWindow();
 
     BrowserSettings getSettings();
 
