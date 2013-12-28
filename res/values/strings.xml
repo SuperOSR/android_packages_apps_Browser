@@ -141,6 +141,7 @@
     <string name="http">http://</string>
     <!-- Menu item that opens a dialog to save a bookmark for the current page [CHAR LIMIT=30] -->
     <string name="save_to_bookmarks">Save to bookmarks</string>
+    <string name="enable_flow_window">Enable video float window</string>
     <!-- Title of the dialog to bookmark a page -->
     <string name="bookmark_this_page">Bookmark this page</string>
     <!-- Option on bookmark dialog to remove the bookmark [CHAR LIMIT=30] -->
