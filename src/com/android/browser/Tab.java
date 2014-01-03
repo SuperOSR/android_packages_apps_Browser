@@ -781,7 +781,6 @@ class Tab implements PictureListener {
             }
         }
         
-        @Override
         public void onShowFloatingVideoView(String path, int position, 
         		WebChromeClient.CustomViewCallback callback) 
         {
@@ -796,7 +795,6 @@ class Tab implements PictureListener {
         	callback.onCustomViewHidden();
         };
         
-        @Override
         public boolean getEnterFullScreenMode() 
         {
         	return mSettings.getFloatWindowSetting();
